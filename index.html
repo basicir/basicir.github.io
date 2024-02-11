@@ -188,13 +188,278 @@
 			#solution:after {
 			background-color: #8fdaff; 
 			}
+			.square {
+			scale: 1;
+			top: calc(50% - 150px);
+			left: calc(50% - 150px);
+			padding: 0px;
+			margin: 0px;
+			overflow: hidden;
+			width: 300px;
+			height: 300px;
+			border: 2px solid black;
+			position: relative;
+			border-radius: 50%;
+			}
+			.square *{
+			padding: 0px;
+			margin: 0px;
+			}
+			.vor {
+			z-index: 5;
+			display: block;
+			position: absolute;
+			top: 146px;
+			left: 146px;
+			width: 10px;
+			height: 10px;
+			background-color: blue;
+			clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+			}
+			.standard *{
+			z-index: 3;
+			display: block;
+			transform: scaleX(-1);
+			}
+			.nonstandard *{
+			z-index: 1;
+			display: block;
+			}
+			#pie {
+			position: absolute;
+			width: 302px; 
+			height: 302px;
+			background: conic-gradient(#add3d9 calc(70/360*100%), #7be0ff 0%, #7be0ff calc(250/360*100%), #6cadfe 0);
+			}
+			#pie2 {
+			position: absolute;
+			width: 302px; 
+			height: 302px;
+			background: conic-gradient(#add3d9 calc(70/360*100%), #7be0ff 0%, #7be0ff calc(250/360*100%), #6cadfe 0);
+			}
+			.teardrop {
+			padding: 0;
+			margin: 0;
+			position: absolute;
+			}
+			.parallel {
+			padding: 0;
+			margin: 0;
+			position: absolute;
+			}
+			#teardropEntry {
+			width: 148px;
+			height: 148px;
+			border: none;
+			border-right: 2px dashed grey;
+			transform-origin: 149px 149px;
+			transform: rotate(130deg);
+			}
+			#teardropDiagonal {
+			width: 148px;
+			height: 98px;
+			border: none;
+			border-right: 2px dashed grey;
+			transform-origin: 149px 99px;
+			transform: translate(0px, 50px) rotate(-30deg);
+			}
+			#teardropTurn {
+			width: 46px;
+			height: 23px;
+			border: 2px dashed grey;
+			border-bottom: none;
+			border-radius: 25px 25px 0 0;
+			transform-origin: 1px 23px;
+			transform: translate(98px, 39px) rotate(-30deg);
+			}
+			#teardropArrow {
+			width: 0;
+			height: 0;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-bottom: 10px solid grey;
+			transform: translate(139px, 39px) rotate(-210deg);
+			}
+			.teardrop {
+			padding: 0;
+			margin: 0;
+			position: absolute;
+			}
+			#parallelEntry {
+			width: 148px;
+			height: 148px;
+			border: none;
+			border-right: 2px dashed #1a67b7;
+			transform-origin: 149px 149px;
+			transform: rotate(-120deg);
+			}
+			#parallelParallel {
+			width: 148px;
+			height: 110px;
+			border: none;
+			border-right: 2px dashed #1a67b7;
+			border-bottom:  2px dashed transparent;
+			border-bottom-right-radius: 50px;
+			transform-origin: bottom;
+			transform: translate(18px, 50px) rotate(0deg);
+			}
+			#parallelTurn {
+			width: 48px;
+			height: 33px;
+			border: 2px dashed #1a67b7;
+			transform-origin: bottom;
+			border-bottom: transparent;
+			border-top-right-radius: 35px;
+			border-top-left-radius: 35px;
+			transform: translate(116px, 24px) rotate(0deg);
+			}
+			#parallelArrow {
+			width: 0;
+			height: 0;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-bottom: 10px solid #1a67b7;
+			transform: translate(115px, 55px) rotate(-210deg);
+			}
+			#entries {
+			display: block;
+			transform-origin: 150px 150px;
+			transform: translate(2px, 0px) scaleY(-1) rotate(0deg);
+			}
+			#entriesMirrored {
+			display: block;
+			transform-origin: 150px 150px;
+			transform: translate(2px, 0px) scaleY(-1) rotate(0deg);
+			}
+			.holding {
+			z-index: 1;
+			width: 50px;
+			height: 150px;
+			border: 2px solid black;
+			position: absolute;
+			border-radius: 50px;
+			left: 99px;
+			top: 125px;
+			}
+			.holding *{}
+			#square {
+			height: 100%;
+			width: 100%;
+			}  
+			.controls {
+			position: absolute;
+			top: 650px;
+			left: 0;
+			}
+			.paragraph1 {
+			font-size: 11px;
+			font-family: 'Courier New', monospace;
+			font-weight: bold;
+			display: block;
+			z-index: 4;
+			color: black;
+			position: absolute;
+			margin: 0;
+			padding: 0;
+			} 
+			#standardInbound {
+			top: 210px;
+			left: 127px;
+			transform: scaleX(-1) rotate(90deg);
+			}
+			#standardOutbound {
+			top: 180px;
+			left: 178px;
+			transform: scaleX(-1) rotate(90deg);
+			}
+			#standardOffsetEntry {
+			top: 170px;
+			left: 156px;
+			transform: scaleX(-1) rotate(300deg);
+			color: grey;
+			}
+			#nonstandardInbound {
+			z-index: 2;
+			top: 213px;
+			left: 129px;
+			transform: rotate(270deg);
+			}
+			#nonstandardOutbound {
+			z-index: 2;
+			top: 184px;
+			left: 77px;
+			transform: rotate(270deg);
+			}
+			#nonstandardOffsetEntry {
+			z-index: 2;
+			top: 170px;
+			left: 112px;
+			transform: rotate(300deg);
+			color: grey;
+			}
+			.holdingtext {
+			font-family: 'Courier New', monospace;
+			font-size: 11px;
+			color: black;
+			font-weight: bold;
+			z-index: 4;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background: transparent;
+			padding: 5px;
+			padding-top: 7px;
+			border-radius: 50%;
+			text-align: center;
+			}
+			#directLeftBorder{
+			top: 78px;
+			left: 9px;
+			transform: rotate(20deg) scaleX(-1);
+			}
+			#directRightBorder{
+			top: 165px;
+			left: 245px;
+			transform: rotate(20deg) scaleY(-1);
+			}
+			#offsetParallelBorder{
+			top: -5px;
+			left: 129px;
+			transform: rotate(90deg) scaleX(-1);	  	
+			}
+			#directLeftBorder1{
+			z-index: 2;
+			top: 165px;
+			left:9px;
+			transform: rotate(340deg) ;	
+			}
+			#directRightBorder1{
+			z-index: 2;
+			top: 79px;
+			left: 246px;
+			transform: rotate(160deg);	
+			}
+			#offsetParallelBorder1{
+			z-index: 2;
+			top: -5px;
+			left: 129px;
+			transform: rotate(90deg);	
+			}
+			#holdcontainer {
+			position: relative;
+			height: 350px;
+			width: 100%;
+			display: none;
+			padding: 0;
+			margin: 0;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="tab">
 			<button class="tablinks" onclick="openTab(event, 'Tab1')" id="defaultOpen">RADIAL INTERCEPTION</button>
 			<button class="tablinks" onclick="openTab(event, 'Tab3')">NDB INTERCEPTION (QDM-QDR)</button>
-			<button class="tablinks" onclick="openTab(event, 'Tab2')">HOLDING ENTRY</button>
+			<button class="tablinks" onclick="openTab(event, 'Tab2')" >HOLDING ENTRY</button>
 		</div>
 		<div id="Tab1" class="tabcontent">
 			<h3>Radial interception</h3>
@@ -214,7 +479,57 @@
 		<div id="Tab2" class="tabcontent">
 			<h3>Holding entry</h3>
 			<p class="output" id="output2"></p>
-			<button class="button-19" onclick="generateRandomNumber2()">Generate New Task</button>
+			<button class="button-19" onclick="generateRandomNumber2();hideSolution3()">Generate New Task</button>
+			<button class="button-19" id="solution" onclick="showSolution3()">Show solution</button>
+			<div id="holdcontainer">
+				<div class="square">
+					<div id="square">
+						<div class="vor"></div>
+						<div class="standard">
+							<p class="holdingtext" id="directLeftBorder"><span>R290°<br>±5°</span></p>
+							<p class="holdingtext" id="directRightBorder"><span>R110°<br>±5°</span></p>
+							<p class="holdingtext" id="offsetParallelBorder"><span>R180°<br>±5°</span></p>
+							<p class="paragraph1" id="standardInbound"><span>C360°→</span></p>
+							<p class="paragraph1" id="standardOutbound"><span>←180°</span></p>
+							<p class="paragraph1" id="standardOffsetEntry"><span>150°→</span></p>
+							<div class="pie" id="pie">
+								<div class="holding" id="holding"></div>
+								<div id="entries">
+									<div class="teardrop" id="teardropEntry"></div>
+									<div class="teardrop" id="teardropDiagonal"></div>
+									<div class="teardrop" id="teardropTurn"></div>
+									<div class="teardrop" id="teardropArrow"></div>
+									<div class="parallel" id="parallelEntry"></div>
+									<div class="parallel" id="parallelParallel"></div>
+									<div class="parallel" id="parallelTurn"></div>
+									<div class="parallel" id="parallelArrow"></div>
+								</div>
+							</div>
+						</div>
+						<div class="nonstandard">
+							<p class="holdingtext" id="directLeftBorder1"><span>R250°<br>±5°</span></p>
+							<p class="holdingtext" id="directRightBorder1"><span>R070°<br>±5°</span></p>
+							<p class="holdingtext" id="offsetParallelBorder1"><span>R360°<br>±5°</span></p>
+							<p class="paragraph1" id="nonstandardInbound"><span>C360°→</span></p>
+							<p class="paragraph1" id="nonstandardOutbound"><span>←180°</span></p>
+							<p class="paragraph1" id="nonstandardOffsetEntry"><span>←210°</span></p>
+							<div class="pie" id="pie2">
+								<div class="holding" id="holding"></div>
+								<div id="entriesMirrored">
+									<div class="teardrop" id="teardropEntry"></div>
+									<div class="teardrop" id="teardropDiagonal"></div>
+									<div class="teardrop" id="teardropTurn"></div>
+									<div class="teardrop" id="teardropArrow"></div>
+									<div class="parallel" id="parallelEntry"></div>
+									<div class="parallel" id="parallelParallel"></div>
+									<div class="parallel" id="parallelTurn"></div>
+									<div class="parallel" id="parallelArrow"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div id="Tab3" class="tabcontent">
 			<h3>NDB interception (QDM-QDR)</h3>
@@ -231,15 +546,32 @@
 				</div>
 			</div>
 		</div>
+		<!--- <div class="controls"> 
+			<input id="slider" type="number" min="0" max="360" value="0" step="1" oninput="rotateSquare(this.value)">
+			<input id="slider" type="range" min="0" max="360" value="0" step="1" oninput="updateRotation(this.value)">
+			<button onclick="nonStandard()">nonstandard</button>
+			<button onclick="Standard()">standard</button> 
+			</div> -->
 		<div class="explanation">
 			This is a very basic task generator for your basic ir excercises. Use any flight simulator to complete the given tasks. Since the parameters of the tasks are truly random, some of them might be very tedious to accomplish, or even impossible according to the procedures, feel free to skip those and generate a new one. Of course all instructions here are optional, if for example you wish to ignore the altitude parameter of the task, feel free to do so, everybody can use the page to their own taste.
 			<h2>One recommended way of using the page is with luizmonteiro simulator:</h2>
 			<h3>Let's say you would like to excercise your holding entries.</h3>
 			<p>- I suggest you to use the <a href="http://www.luizmonteiro.com/estore.aspx#P1">downloadable navigation simulator</a>, (which is completely free now, just follow the instructions on the page) since it has the most features, including the very handy random aircraft placement and random heading. </p>
+			<p>- Press 'O' to show options.</p>
 			<p>- Here you can select if you want glass cockpit or analog instruments in the general settings, as well as hide your map so you can only navigate by your instruments</p>
 			<p>- In the other settings tab you can place your aircraft randomly and also set its heading</p>
 			<p>- Now come back to this page click on the Holding entry tab, and click "Generate new task"</p>
 			<p>- Accomplish the task! (You can see your controls in the simulator at Help>Keyboard commands)</p>
+			<p>- Check if you did right by unhiding the map and clicking "show solution"</p>
+			<p>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<p align="right">Created By Szabó Bendegúz</a>
+			</p>
 		</div>
 		<script>
 			// Open the default tab on page load
@@ -320,8 +652,11 @@
 			
 			// Function to generate random number for holding entry task
 			function generateRandomNumber2() {
+				var randomNumb1;
 			    // Generate random number between 1 and 360
-			    var randomNumber = (Math.floor(Math.random() * 360) + 1).toString().padStart(3, '0');
+				randomNumb1 = (Math.floor(Math.random() * 360) + 1)
+			
+			    var randomNumber = randomNumb1.toString().padStart(3, '0');
 			
 			    // Generate random direction (track or radial)
 			    var direction = Math.random() < 0.5 ? "track" : "radial";
@@ -340,6 +675,278 @@
 			    }
 			
 			    document.getElementById("output2").innerText = output;
+			
+			
+			 function rotateSquareRandomly() {
+			     var randomRotation = parseInt(randomNumb1);
+			
+			     if (direction === "radial") {
+			     	randomRotation = (parseInt(randomNumb1) + 180) % 360;
+			     	     if (randomRotation === 0) {
+			             randomRotation = 360;
+			         }
+			     }
+			     else {
+			     	randomRotation = parseInt(randomNumb1);
+			     }
+			     console.log(randomRotation)
+			     const square = document.getElementById('square');
+			     square.style.transform = `rotate(${randomRotation}deg)`;
+			
+			
+			//Számok átírása valósidejűleg
+			
+			
+			     const directLeftBorder = document.getElementById('directLeftBorder');
+			     let directLeftBorderAngle = (parseInt(randomRotation) + 290) % 360;
+			     if (directLeftBorderAngle === 0) {
+			             directLeftBorderAngle = 360;
+			         }
+			     directLeftBorder.innerHTML = `<span>R${directLeftBorderAngle.toString().padStart(3, '0')}°<br>±5°</span>`;
+			
+			     if (randomRotation <= 250 && randomRotation >= 70) {
+			         directLeftBorder.style.transform = 'rotate(20deg) scaleY(-1)';
+			         directLeftBorder.style.left = '10px'
+			         directLeftBorder.style.top = '90px'
+			     } else {
+			         directLeftBorder.style.transform = 'rotate(20deg) scaleX(-1)'; // Reset the transform if angle is less than 180
+			         directLeftBorder.style.left = '10px';
+			         directLeftBorder.style.top = '90px'
+			     }
+			
+			
+			
+			     const directRightBorder = document.getElementById('directRightBorder');
+			     let directRightBorderAngle = (parseInt(randomRotation) + 110) % 360;
+			     if (directRightBorderAngle === 0) {
+			             directRightBorderAngle = 360;
+			         }
+			     directRightBorder.innerHTML = `<span>R${directRightBorderAngle.toString().padStart(3, '0')}°<br>±5°</span>`;  
+			
+			     if (randomRotation <= 250 && randomRotation >= 70) {
+			         directRightBorder.style.transform = 'rotate(20deg) scaleY(-1)';
+			         directRightBorder.style.left = '247px'
+			         directRightBorder.style.top = '176px'
+			     } else {
+			         directRightBorder.style.transform = 'rotate(20deg) scaleX(-1)'; // Reset the transform if angle is less than 180
+			         directRightBorder.style.left = '247px';
+			         directRightBorder.style.top = '176px'
+			     }
+			
+			     const offsetParallelBorder = document.getElementById('offsetParallelBorder');
+			     let offsetParallelBorderAngle = (parseInt(randomRotation)) % 360;
+			     if (offsetParallelBorderAngle === 0) {
+			             offsetParallelBorderAngle = 360;
+			         }
+			     offsetParallelBorder.innerHTML = `<span>R${offsetParallelBorderAngle.toString().padStart(3, '0')}°<br>±5°</span>`;
+			
+			     if (randomRotation <= 180) {
+			         offsetParallelBorder.style.transform = 'rotate(90deg) scaleY(-1)';
+			         offsetParallelBorder.style.left = '128px'
+			         offsetParallelBorder.style.top = '5px'
+			     } else {
+			         offsetParallelBorder.style.transform = 'rotate(90deg) scaleX(-1)';
+			         offsetParallelBorder.style.left = '129px'
+			         offsetParallelBorder.style.top = '5px'
+			     }
+			
+			 
+			
+			     const directLeftBorder1 = document.getElementById('directLeftBorder1');
+			     let directLeftBorderAngle1 = (parseInt(randomRotation) + 250) % 360;
+			     if (directLeftBorderAngle1 === 0) {
+			             directLeftBorderAngle1 = 360;
+			         }
+			     directLeftBorder1.innerHTML = `<span>R${directLeftBorderAngle1.toString().padStart(3, '0')}°<br>±5°</span>`;
+			
+			     if (randomRotation >= 110 && randomRotation <= 290) {
+			         directLeftBorder1.style.transform = 'rotate(160deg) ';
+			         directLeftBorder1.style.left = '8px'
+			         directLeftBorder1.style.top = '177px'
+			     } else {
+			         directLeftBorder1.style.transform = 'rotate(340deg)'; // Reset the transform if angle is less than 180
+			         directLeftBorder1.style.left = '10px';
+			         directLeftBorder1.style.top = '176px'
+			     }    
+			
+			     const directRightBorder1 = document.getElementById('directRightBorder1');
+			     let directRightBorderAngle1 = (parseInt(randomRotation) + 70) % 360;
+			     if (directRightBorderAngle1 === 0) {
+			             directRightBorderAngle1 = 360;
+			         }
+			     directRightBorder1.innerHTML = `<span>R${directRightBorderAngle1.toString().padStart(3, '0')}°<br>±5°</span>`;  
+			
+			     if (randomRotation >= 110 && randomRotation <= 290) {
+			         directRightBorder1.style.transform = 'rotate(160deg) ';
+			         directRightBorder1.style.left = '247px'
+			         directRightBorder1.style.top = '91px'
+			     } else {
+			         directRightBorder1.style.transform = 'rotate(340deg)';
+			         directRightBorder1.style.left = '247px'
+			         directRightBorder1.style.top = '89px'
+			     }    
+			
+			     const offsetParallelBorder1 = document.getElementById('offsetParallelBorder1');
+			     let offsetParallelBorderAngle1 = (parseInt(randomRotation)) % 360;
+			     if (offsetParallelBorderAngle1 === 0) {
+			             offsetParallelBorderAngle1 = 360;
+			         }
+			     offsetParallelBorder1.innerHTML = `<span>R${offsetParallelBorderAngle1.toString().padStart(3, '0')}°<br>±5°</span>`;   
+			
+			      if (randomRotation <= 180) {
+			         offsetParallelBorder1.style.transform = 'rotate(90deg) scale(-1)';
+			         offsetParallelBorder1.style.left = '128px'
+			         offsetParallelBorder1.style.top = '5px'
+			     } else {
+			         offsetParallelBorder1.style.transform = 'rotate(90deg) scaleY(1)';
+			         offsetParallelBorder1.style.left = '128px'
+			         offsetParallelBorder1.style.top = '5px'
+			     }
+			
+			
+			//Számok átírása valósidejűleg ÉS TÜKRÖZÉS A JÓ LÁTHATÓSÁG ÉRDEKÉBEN
+			
+			
+			
+			     const standardInbound = document.getElementById('standardInbound');
+			     let standardInboundAngle = (parseInt(randomRotation)) % 360;
+			     if (standardInboundAngle === 0) {
+			         standardInboundAngle = 360;
+			     }
+			
+			     if (randomRotation >= 180) {
+			         standardInbound.innerHTML = `<span>←C${standardInboundAngle.toString().padStart(3, '0')}°</span>`;
+			         standardInbound.style.transform = 'scaleX(-1) rotate(-90deg)';
+			         standardInbound.style.left = '135px'
+			     } else {
+			         standardInbound.innerHTML = `<span>C${standardInboundAngle.toString().padStart(3, '0')}°→</span>`;
+			         standardInbound.style.transform = 'scaleX(-1) rotate(90deg)'; // Reset the transform if angle is less than 180
+			         standardInbound.style.left = '123px';
+			     }
+			
+			
+			     const standardOutbound = document.getElementById('standardOutbound');
+			     let standardOutboundAngle = (parseInt(randomRotation) + 180) % 360;
+			     if (standardOutboundAngle === 0) {
+			         standardOutboundAngle = 360;
+			     }
+			
+			     if (randomRotation >= 180) {
+			         standardOutbound.innerHTML = `<span>${standardOutboundAngle.toString().padStart(3, '0')}°→</span>`;
+			         standardOutbound.style.transform = 'scaleX(-1) rotate(-90deg)';
+			         standardOutbound.style.left = '191px'
+			         standardOutbound.style.top = '187px'
+			     } else {
+			         standardOutbound.innerHTML = `<span>←${standardOutboundAngle.toString().padStart(3, '0')}°</span>`;
+			         standardOutbound.style.transform = 'scaleX(-1) rotate(90deg)'; // Reset the transform if angle is less than 180
+			         standardOutbound.style.left = '178px';
+			         standardOutbound.style.top = '180px'
+			     }
+			
+			
+			     const standardOffsetEntry = document.getElementById('standardOffsetEntry');
+			     let standardOffsetEntryAngle = (parseInt(randomRotation) + 150) % 360;
+			     if (standardOffsetEntryAngle === 0) {
+			         standardOffsetEntryAngle = 360;
+			     }
+			
+			     if (randomRotation >= 30 && randomRotation <= 210 ) {
+			         standardOffsetEntry.innerHTML = `<span>←${standardOffsetEntryAngle.toString().padStart(3, '0')}°</span>`;
+			         standardOffsetEntry.style.transform = 'scaleX(-1) rotate(120deg)';
+			         standardOffsetEntry.style.left = '163px'
+			         standardOffsetEntry.style.top = '210px'
+			     } else {
+			         standardOffsetEntry.innerHTML = `<span>${standardOffsetEntryAngle.toString().padStart(3, '0')}°→</span>`;
+			         standardOffsetEntry.style.transform = 'scaleX(-1) rotate(-60deg)'; // Reset the transform if angle is less than 180
+			         standardOffsetEntry.style.left = '156px';
+			         standardOffsetEntry.style.top = '170px'
+			     }
+			     
+			
+			
+			
+			
+			     const nonstandardInbound = document.getElementById('nonstandardInbound');
+			     let nonstandardInboundAngle = (parseInt(randomRotation)) % 360;
+			     if (nonstandardInboundAngle === 0) {
+			         nonstandardInboundAngle = 360;
+			     }
+			
+			     if (randomRotation >= 180) {
+			         nonstandardInbound.innerHTML = `<span>←C${nonstandardInboundAngle.toString().padStart(3, '0')}°</span>`;
+			         nonstandardInbound.style.transform = 'scaleX(1) rotate(90deg)';
+			         nonstandardInbound.style.left = '137px'
+			         nonstandardInbound.style.top = '213px'
+			     } else {
+			         nonstandardInbound.innerHTML = `<span>C${nonstandardInboundAngle.toString().padStart(3, '0')}°→</span>`;
+			         nonstandardInbound.style.transform = 'scaleX(1) rotate(270deg)'; // Reset the transform if angle is less than 180
+			         nonstandardInbound.style.left = '125px';
+			         nonstandardInbound.style.top = '213px'
+			     }
+			
+			
+			     const nonstandardOutbound = document.getElementById('nonstandardOutbound');
+			     let nonstandardOutboundAngle = (parseInt(randomRotation) + 180) % 360;
+			     if (nonstandardOutboundAngle === 0) {
+			         nonstandardOutboundAngle = 360;
+			     }
+			
+			     if (randomRotation >= 180) {
+			         nonstandardOutbound.innerHTML = `<span>${nonstandardOutboundAngle.toString().padStart(3, '0')}°→</span>`;
+			         nonstandardOutbound.style.transform = ' rotate(90deg)';
+			         nonstandardOutbound.style.left = '89px'
+			         nonstandardOutbound.style.top = '184px'
+			     } else {
+			         nonstandardOutbound.innerHTML = `<span>←${nonstandardOutboundAngle.toString().padStart(3, '0')}°</span>`;
+			         nonstandardOutbound.style.transform = ' rotate(270deg)'; // Reset the transform if angle is less than 180
+			         nonstandardOutbound.style.left = '77px';
+			         nonstandardOutbound.style.top = '184px'
+			     }
+			
+			
+			   const nonstandardOffsetEntry = document.getElementById('nonstandardOffsetEntry');
+			     let nonstandardOffsetEntryAngle = (parseInt(randomRotation) + 210) % 360;
+			     if (nonstandardOffsetEntryAngle === 0) {
+			         nonstandardOffsetEntryAngle = 360;
+			     }
+			
+			     if (randomRotation >= 150 && randomRotation <= 330 ) {
+			         nonstandardOffsetEntry.innerHTML = `<span>${nonstandardOffsetEntryAngle.toString().padStart(3, '0')}°→</span>`;
+			         nonstandardOffsetEntry.style.transform = 'rotate(120deg)';
+			         nonstandardOffsetEntry.style.left = '102px'
+			         nonstandardOffsetEntry.style.top = '212px'
+			     } else {
+			         nonstandardOffsetEntry.innerHTML = `<span>←${nonstandardOffsetEntryAngle.toString().padStart(3, '0')}°</span>`;
+			         nonstandardOffsetEntry.style.transform = 'rotate(300deg)'; // Reset the transform if angle is less than 180
+			         nonstandardOffsetEntry.style.left = '112px';
+			         nonstandardOffsetEntry.style.top = '170px'
+			     }
+			
+			
+			     const isNonStandard = includeLeftHand;
+			     if (isNonStandard) {
+			         nonStandard();
+			     } else {
+			         Standard();
+			     }
+			 }
+			
+			 function nonStandard() {
+			     const standardElements = document.getElementsByClassName('standard');
+			     for (let i = 0; i < standardElements.length; i++) {
+			         standardElements[i].style.display = 'none';
+			     }
+			 }
+			
+			 function Standard() {
+			     const standardElements = document.getElementsByClassName('standard');
+			     for (let i = 0; i < standardElements.length; i++) {
+			         standardElements[i].style.display = 'block';
+			     }
+			 }
+			
+			 // Initial rotation and function call
+			 rotateSquareRandomly();
 			}
 			
 			// Function to generate random number for NDB interception task
@@ -383,7 +990,7 @@
 			        }
 			    }
 			}
-
+			
 			
 			// Function to show solution for radial interception task
 			function showSolution1() {
@@ -408,8 +1015,28 @@
 			    var solutionDiv = document.getElementById("solutionDiv2");
 			    solutionDiv.style.display = "none";
 			}
+			function showSolution3() {
+			    var solutionDiv = document.getElementById("holdcontainer");
+			    solutionDiv.style.display = "block";
+			}
+			
+			// Function to hide solution for NDB interception task
+			function hideSolution3() {
+			    var solutionDiv = document.getElementById("holdcontainer");
+			    solutionDiv.style.display = "none";
+			}
+			//******SEGÉDKÓD
+			 /*let randomRotation = 90; // Initialize randomRotation variable
+			
+			 function updateRotation(value) {
+			     randomRotation = parseInt(value); // Update randomRotation with slider value
+			
+			     rotateSquareRandomly(); // Call the function to rotate square with new value
+			 }*/
+			//******SEGÉDKÓD VÉGE
+			
 			
 			
 		</script>
-	</body>
+</body>
 </html>
