@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Basic IR task generator</title>
+		<style>
+			body {
+			font-family: din-round, sans-serif;
+			margin: 0;
+			padding: 0;
+			}
+			div {
+			padding: 6px 12px;
+			}
+			.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #f1f1f1;
+			}
+			.tab button {
+			border-radius: 10px;
+			font-family: din-round, sans-serif;
+			font-weight: bold;
+			background-color: inherit;
+			float: left;
+			border: solid;
+			border-color: transparent;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			}
+			.tab button:hover {
+			background-color: white;
+			border-width: 2px;
+			border: solid;
+			border-color: #7EBB72;
+			}
+			.tab button.active {
+			color: white;
+			background-color: #7EBB72;
+			}
+			.tabcontent {
+			display: none;
+			border: 1px solid #ccc;
+			border-top: none;
+			}
+			.tabcontent.active {
+			display: block;
+			}
+			.explanation {
+			align-content: right;
+			color: grey;
+			font-size: 11px;
+			background-color: #f1f1f1;
+			padding-top: 50px;
+			}
+			.output {
+			font-family: Courier New;
+			font-style: italic;
+			font-size: 24px;
+			color: #2b7d05;
+			}
+			.button-19 {
+			appearance: button;
+			background-color: green;
+			border: solid transparent;
+			border-radius: 16px;
+			border-width: 0 0 4px;
+			box-sizing: border-box;
+			color: #FFFFFF;
+			cursor: pointer;
+			display: inline-block;
+			font-family: din-round,sans-serif;
+			font-size: 15px;
+			font-weight: 700;
+			letter-spacing: .8px;
+			line-height: 20px;
+			margin-top: 5px;
+			outline: none;
+			overflow: visible;
+			padding: 13px 16px;
+			text-align: center;
+			text-transform: uppercase;
+			touch-action: manipulation;
+			transform: translateZ(0);
+			transition: filter .2s;
+			user-select: none;
+			-webkit-user-select: none;
+			vertical-align: middle;
+			white-space: nowrap;
+			width: 100%;
+			}
+			.button-19:after {
+			background-clip: padding-box;
+			background-color: #7EBB72;
+			border: solid transparent;
+			border-radius: 16px;
+			border-width: 0 0 4px;
+			bottom: -4px;
+			content: "";
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: -1;
+			}
+			.button-19:main,
+			.button-19:focus {
+			user-select: auto;
+			}
+			.button-19:hover:not(:disabled) {
+			filter: brightness(1.1);
+			-webkit-filter: brightness(1.1);
+			}
+			.button-19:disabled {
+			cursor: auto;
+			}
+			.button-19:active {
+			border-width: 4px 0 0;
+			background: none;
+			}
+			.container {
+			width: 100%;
+			display: none;
+			padding-top: 30px;
+			padding-left: calc(50% - 100px);
+			padding-bottom: 30px;
+			margin: 0;
+			text-align: center;
+			}
+			.compass {
+			padding: 0;
+			margin: 0;
+			position: relative;
+			width: 200px;
+			height: 200px;
+			}
+			.circle {
+			padding: 0;
+			margin: 0;
+			border: 2px solid black;
+			border-radius: 50%;
+			width: 196px;
+			height: 196px;
+			}
+			.line, .perpline, .perpline2, .perpline3 {
+			all: unset;
+			position: absolute;
+			top: 100px;
+			left: 100px;
+			transform: translate(-50px, -100px) rotate(0deg);
+			transform-origin: bottom center;
+			}
+			.line {
+			width: 1px;
+			height: 100px;
+			background-color: red;
+			}
+			.perpline {
+			width: 30px;
+			height: 60px;
+			background-color: transparent;
+			border-top: solid;
+			border-top-width: 5px;
+			border-top-color: blue;
+			}
+			.perpline2 {
+			width: 20px;
+			height: 35px;
+			background-color: transparent;
+			border-top: solid;
+			border-top-width: 5px;
+			border-top-color: blue;
+			}
+			.perpline3 {
+			width: 5px;
+			height: 25px;
+			background-color: transparent;
+			border-top: solid;
+			border-top-width: 50px;
+			border-top-color: blue;
+			}
+			#solution {
+			background-color: #00b7ff; 
+			}
+			#solution:after {
+			background-color: #8fdaff; 
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tab">
+			<button class="tablinks" onclick="openTab(event, 'Tab1')" id="defaultOpen">RADIAL INTERCEPTION</button>
+			<button class="tablinks" onclick="openTab(event, 'Tab3')">NDB INTERCEPTION (QDM-QDR)</button>
+			<button class="tablinks" onclick="openTab(event, 'Tab2')">HOLDING ENTRY</button>
+		</div>
+		<div id="Tab1" class="tabcontent">
+			<h3>Radial interception</h3>
+			<p class="output" id="output1"></p>
+			<button class="button-19" onclick="generateRandomNumber1();hideSolution1()">Generate New Task</button>
+			<button class="button-19" id="solution" onclick="showSolution1()">Show solution</button>
+			<div class="container" id="solutionDiv">
+				<div class="compass">
+					<div class="circle"></div>
+					<div class="line" id="line"></div>
+					<div class="perpline" id="perpline"></div>
+					<div class="perpline2" id="perpline2"></div>
+					<div class="perpline3" id="perpline3"></div>
+				</div>
+			</div>
+		</div>
+		<div id="Tab2" class="tabcontent">
+			<h3>Holding entry</h3>
+			<p class="output" id="output2"></p>
+			<button class="button-19" onclick="generateRandomNumber2()">Generate New Task</button>
+		</div>
+		<div id="Tab3" class="tabcontent">
+			<h3>NDB interception (QDM-QDR)</h3>
+			<p class="output" id="output3"></p>
+			<button class="button-19" onclick="generateRandomNumber3();hideSolution2()">Generate New Task</button>
+			<button class="button-19" id="solution" onclick="showSolution2()">Show solution</button>
+			<div class="container" id="solutionDiv2">
+				<div class="compass">
+					<div class="circle"></div>
+					<div class="line" id="line2"></div>
+					<div class="perpline" id="perpline21"></div>
+					<div class="perpline2" id="perpline22"></div>
+					<div class="perpline3" id="perpline23"></div>
+				</div>
+			</div>
+		</div>
+		<div class="explanation">
+			This is a very basic task generator for your basic ir excercises. Use any flight simulator to complete the given tasks. Since the parameters of the tasks are truly random, some of them might be very tedious to accomplish, or even impossible according to the procedures, feel free to skip those and generate a new one. Of course all instructions here are optional, if for example you wish to ignore the altitude parameter of the task, feel free to do so, everybody can use the page to their own taste.
+			<h2>One recommended way of using the page is with luizmonteiro simulator:</h2>
+			<h3>Let's say you would like to excercise your holding entries.</h3>
+			<p>- I suggest you to use the <a href="http://www.luizmonteiro.com/estore.aspx#P1">downloadable navigation simulator</a>, (which is completely free now, just follow the instructions on the page) since it has the most features, including the very handy random aircraft placement and random heading. </p>
+			<p>- Here you can select if you want glass cockpit or analog instruments in the general settings, as well as hide your map so you can only navigate by your instruments</p>
+			<p>- In the other settings tab you can place your aircraft randomly and also set its heading</p>
+			<p>- Now come back to this page click on the Holding entry tab, and click "Generate new task"</p>
+			<p>- Accomplish the task! (You can see your controls in the simulator at Help>Keyboard commands)</p>
+		</div>
+		<script>
+			// Open the default tab on page load
+			document.getElementById("defaultOpen").click();
+			generateRandomNumber1()
+			generateRandomNumber2()
+			generateRandomNumber3()
+			// JavaScript code for tab functionality and task generation
+			function openTab(evt, tabName) {
+			    var i, tabcontent, tablinks;
+			    tabcontent = document.getElementsByClassName("tabcontent");
+			    for (i = 0; i < tabcontent.length; i++) {
+			        tabcontent[i].style.display = "none";
+			    }
+			    tablinks = document.getElementsByClassName("tablinks");
+			    for (i = 0; i < tablinks.length; i++) {
+			        tablinks[i].className = tablinks[i].className.replace(" active", "");
+			    }
+			    document.getElementById(tabName).style.display = "block";
+			    evt.currentTarget.className += " active";
+			}
+			
+			// Function to generate random number for radial interception task
+			function generateRandomNumber1() {
+			    // Generate random number between 1 and 360
+			    var randomNumb = (Math.floor(Math.random() * 360) + 1);
+			
+			    var randomNumber = randomNumb.toString().padStart(3, '0');
+			
+			    // Generate random bound (inbound or outbound)
+			    var bound = Math.random() < 0.5 ? "inbound" : "outbound";
+			
+			    // Generate random direction (radial or course)
+			    var direction = Math.random() < 0.5 ? "radial" : "course";
+			
+			    // Output random
+			    var output = "Intercept " + bound + " " + direction + " " + randomNumber + "°";
+			    document.getElementById("output1").innerText = output;
+			
+			
+			    drawLine(randomNumb);
+			
+			    function drawLine(angle) {
+			        var oppangle = (angle + 180) % 360;
+			        if (oppangle === 0) oppangle = 360;
+			        var line = document.getElementById("line");
+			        var perpline = document.getElementById("perpline");
+			        var perpline2 = document.getElementById("perpline2");
+			        var perpline3 = document.getElementById("perpline3");
+			        if (bound === "inbound" && direction === "course") {
+			
+			
+			            line.style.transform = "translate(-50%, -100%) rotate(" + oppangle + "deg)";
+			            perpline.style.transform = "translate(-50%, -100%) rotate(" + oppangle + "deg)";
+			            perpline.style.width = '20px';
+			            perpline2.style.transform = "translate(-50%, -100%) rotate(" + oppangle + "deg)";
+			            perpline2.style.width = '30px';
+			            perpline3.style.transform = "translate(-50%, -100%) rotate(" + oppangle + "deg)";
+			        } else if (bound === "outbound") {
+			
+			
+			            line.style.transform = "translate(-50%, -100%) rotate(" + angle + "deg)";
+			            perpline.style.transform = "translate(-50%, -100%) rotate(" + angle + "deg)";
+			            perpline.style.width = '30px';
+			            perpline2.style.transform = "translate(-50%, -100%) rotate(" + angle + "deg)";
+			            perpline2.style.width = '20px';
+			            perpline3.style.transform = "translate(-50%, -100%) rotate(" + angle + "deg)";
+			        } else {
+			            line.style.transform = "translate(-50%, -100%) rotate(" + angle + "deg)";
+			            perpline.style.transform = "translate(-50%, -100%) rotate(" + angle + "deg)";
+			            perpline.style.width = '20px';
+			            perpline2.style.transform = "translate(-50%, -100%) rotate(" + angle + "deg)";
+			            perpline2.style.width = '30px';
+			            perpline3.style.transform = "translate(-50%, -100%) rotate(" + angle + "deg)";
+			        }
+			    }
+			}
+			
+			// Function to generate random number for holding entry task
+			function generateRandomNumber2() {
+			    // Generate random number between 1 and 360
+			    var randomNumber = (Math.floor(Math.random() * 360) + 1).toString().padStart(3, '0');
+			
+			    // Generate random direction (track or radial)
+			    var direction = Math.random() < 0.5 ? "track" : "radial";
+			
+			    var randomAltitude = Math.round(Math.random() * 56 + 10) * 100;
+			
+			    // Randomly include the word "lefthand" (30% chance)
+			    var includeLeftHand = Math.random() < 0.3;
+			
+			    // Output random
+			    var output = "Proceed to VOR altitude " + randomAltitude + "' hold inbound " + direction + " " + randomNumber + "°";
+			
+			    // Occasionally add "lefthand" to the output
+			    if (includeLeftHand) {
+			        output += " left hand pattern";
+			    }
+			
+			    document.getElementById("output2").innerText = output;
+			}
+			
+			// Function to generate random number for NDB interception task
+			function generateRandomNumber3() {
+			    // Generate random number between 1 and 360
+			    var randomNumb2 = (Math.floor(Math.random() * 360) + 1);
+			    var randomNumber = randomNumb2.toString().padStart(3, '0');
+			
+			    // Generate random direction (QDM or QDR)
+			    var direction = Math.random() < 0.5 ? "QDM" : "QDR";
+			
+			    // Output random
+			    var output = "Intercept " + direction + " " + randomNumber + "°";
+			    document.getElementById("output3").innerText = output;
+			
+			    drawLine2(randomNumb2);
+			    
+			    function drawLine2(angle) {
+			        var oppangle = (angle + 180) % 360;
+			        if (oppangle === 0) oppangle = 360;
+			
+			        var line2 = document.getElementById("line2");
+			        var perpline21 = document.getElementById("perpline21");
+			        var perpline22 = document.getElementById("perpline22");
+			        var perpline23 = document.getElementById("perpline23");
+			
+			        if (direction === "QDR") {
+			            line2.style.transform = "translate(-50%, -100%) rotate(" + angle + "deg)";
+			            perpline21.style.transform = "translate(-50%, -100%) rotate(" + angle + "deg)";
+			            perpline21.style.width = '30px';
+			            perpline22.style.transform = "translate(-50%, -100%) rotate(" + angle + "deg)";
+			            perpline22.style.width = '20px';
+			            perpline23.style.transform = "translate(-50%, -100%) rotate(" + angle + "deg)";
+			        } else {
+			            line2.style.transform = "translate(-50%, -100%) rotate(" + oppangle + "deg)";
+			            perpline21.style.transform = "translate(-50%, -100%) rotate(" + oppangle + "deg)";
+			            perpline21.style.width = '20px';
+			            perpline22.style.transform = "translate(-50%, -100%) rotate(" + oppangle + "deg)";
+			            perpline22.style.width = '30px';
+			            perpline23.style.transform = "translate(-50%, -100%) rotate(" + oppangle + "deg)";
+			        }
+			    }
+			}
+
+			
+			// Function to show solution for radial interception task
+			function showSolution1() {
+			    var solutionDiv = document.getElementById("solutionDiv");
+			    solutionDiv.style.display = "block";
+			}
+			
+			// Function to hide solution for radial interception task
+			function hideSolution1() {
+			    var solutionDiv = document.getElementById("solutionDiv");
+			    solutionDiv.style.display = "none";
+			}
+			
+			// Function to show solution for NDB interception task
+			function showSolution2() {
+			    var solutionDiv = document.getElementById("solutionDiv2");
+			    solutionDiv.style.display = "block";
+			}
+			
+			// Function to hide solution for NDB interception task
+			function hideSolution2() {
+			    var solutionDiv = document.getElementById("solutionDiv2");
+			    solutionDiv.style.display = "none";
+			}
+			
+			
+		</script>
+	</body>
+</html>
